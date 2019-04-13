@@ -21,7 +21,7 @@ class ActorTableViewController: UITableViewController {
             return
         }
         
-        GenreAndActorManager<Actors>.getAll(url: url) { actors, errors in
+        APIManager<Actors>.getAll(url: url) { actors, errors in
             DispatchQueue.main.sync {
                 if let actors = actors {
                     self.movieTimeManager.apiReturnedActors = actors

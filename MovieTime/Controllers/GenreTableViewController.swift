@@ -21,7 +21,7 @@ class GenreTableViewController: UITableViewController {
             return
         }
         
-        GenreAndActorManager<Genres>.getAll(url: url) { genres, errors in
+        APIManager<Genres>.getAll(url: url) { genres, errors in
             DispatchQueue.main.sync {
                 if let genres = genres {
                     self.movieTimeManager.apiReturnedGenres = genres

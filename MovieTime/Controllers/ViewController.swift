@@ -125,7 +125,7 @@ class ViewController: UIViewController {
         guard let url = URL(string: "https://api.themoviedb.org/3/person/\(actorId)/movie_credits?api_key=164f5af1e46d0911dd1fc6fa484e7abe&language=en-US") else {
             return
         }
-        ResultsManager<ActorMovies>.getAll(url: url) { actorMovies, errors in
+        APIManager<ActorMovies>.getAll(url: url) { actorMovies, errors in
             if let actorMovies = actorMovies {
                 self.movieTimeManager.apiReturnedUserOneActorMovies.append(actorMovies)
             }
@@ -145,7 +145,7 @@ class ViewController: UIViewController {
         guard let url = URL(string: "https://api.themoviedb.org/3/person/\(actorId)/movie_credits?api_key=164f5af1e46d0911dd1fc6fa484e7abe&language=en-US") else {
             return
         }
-        ResultsManager<ActorMovies>.getAll(url: url) { actorMovies, errors in
+        APIManager<ActorMovies>.getAll(url: url) { actorMovies, errors in
             if let actorMovies = actorMovies {
                 self.movieTimeManager.apiReturnedUserTwoActorMovies.append(actorMovies)
             }

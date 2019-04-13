@@ -22,55 +22,10 @@ class MovieTimeManager {
     
     var movieListIds: [Int] = [Int]()
     var finalMovies: [Movie] = [Movie]()
-}
-
-/*
-extension MovieTimeManager {
-    func getListOfGenres() {
-        self.client.getListOfGenres { genres, error in
-            if let genres = genres {
-                self.apiReturnedGenres = genres
-            }
-        }
-    }
-}
-
-extension MovieTimeManager {
-    func getListOfActors() {
-        self.client.getListOfActors { actors, error in
-            if let actors = actors {
-                self.apiReturnedActors = actors
-            }
-        }
-    }
-}
-
-extension MovieTimeManager {
-    func getListOfUserOneActorMovies(actorId: Int) {
-        self.client.getListOfActorMovies(actorId: actorId) { actorMovies, error in
-                if let actorMovies = actorMovies {
-                    self.apiReturnedUserOneActorMovies.append(actorMovies)
-                }
-            }
-    }
     
-    func getListOfUserTwoActorMovies(actorId: Int) {
-        self.client.getListOfActorMovies(actorId: actorId) { actorMovies, error in
-            if let actorMovies = actorMovies {
-                self.apiReturnedUserTwoActorMovies.append(actorMovies)
-            }
-        }
+    func sortMovies() {
+        var tempArray = [Movie]()
+        tempArray = finalMovies.sorted(by: { $0.popularity < $1.popularity })
+        finalMovies = tempArray
     }
-    
 }
-
-extension MovieTimeManager {
-    func getMovies(movieId: Int) {
-        self.client.getMovies(movieId: movieId) { movie, error in
-            if let movie = movie {
-                self.finalMovies.append(movie)
-            }
-        }
-    }
-}*/
-

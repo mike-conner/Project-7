@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j2a-a5-wDg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j2a-a5-wDg">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--MovieTime-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MovieTime" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="569"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-iphone6plus" translatesAutoresizingMaskIntoConstraints="NO" id="O8r-Df-1Lb">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="569"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tu9-b4-ACR">
-                                <rect key="frame" x="20" y="491.5" width="335" height="57.5"/>
+                                <rect key="frame" x="20" y="525.5" width="335" height="57.5"/>
                                 <color key="backgroundColor" red="0.29015409949999998" green="0.1190011278" blue="0.11840771880000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="tu9-b4-ACR" secondAttribute="height" multiplier="350:60" id="ZGV-6u-Bhv"/>
@@ -41,10 +41,10 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="7J9-l9-tfI">
-                                <rect key="frame" x="20" y="134.5" width="335" height="100"/>
+                                <rect key="frame" x="20" y="151.5" width="335" height="100"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dhb-D2-H4x">
-                                        <rect key="frame" x="0.0" y="0.0" width="147.5" height="100"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="82.5" height="100"/>
                                         <state key="normal" image="bubble-empty">
                                             <attributedString key="attributedTitle"/>
                                         </state>
@@ -53,7 +53,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1oh-Wl-kBo">
-                                        <rect key="frame" x="180.5" y="0.0" width="154.5" height="100"/>
+                                        <rect key="frame" x="115.5" y="0.0" width="219.5" height="100"/>
                                         <state key="normal" image="bubble-empty">
                                             <attributedString key="attributedTitle"/>
                                         </state>
@@ -66,6 +66,13 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="sFL-lM-wLI"/>
                                 </constraints>
                             </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tmdbLogo" translatesAutoresizingMaskIntoConstraints="NO" id="pnf-H0-FEl">
+                                <rect key="frame" x="112.5" y="0.0" width="150" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="Dww-It-1Pc"/>
+                                    <constraint firstAttribute="height" constant="55" id="beP-fV-xE9"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -74,23 +81,25 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tu9-b4-ACR" secondAttribute="trailing" constant="20" id="Ep9-aF-r5E"/>
                             <constraint firstAttribute="bottomMargin" secondItem="O8r-Df-1Lb" secondAttribute="bottom" id="FCg-DZ-ztX"/>
                             <constraint firstItem="O8r-Df-1Lb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="N1s-kb-f8U"/>
+                            <constraint firstItem="pnf-H0-FEl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YqX-we-Ijr"/>
                             <constraint firstItem="7J9-l9-tfI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ayH-8v-dkg"/>
                             <constraint firstItem="tu9-b4-ACR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="f8J-Bd-h1V"/>
                             <constraint firstItem="O8r-Df-1Lb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="jZR-qb-C50"/>
+                            <constraint firstItem="pnf-H0-FEl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="moq-qU-ZEQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7J9-l9-tfI" secondAttribute="trailing" constant="20" id="q07-dG-ErR"/>
                             <constraint firstItem="O8r-Df-1Lb" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="r5a-zh-nJN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="tu9-b4-ACR" secondAttribute="bottom" constant="20" id="xPf-JN-dvu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" prompt="MovieTime" id="QLE-FZ-MHc">
-                        <barButtonItem key="leftBarButtonItem" title="Reset User 1" id="HGL-Mw-r5E">
+                    <navigationItem key="navigationItem" title="MovieTime" id="QLE-FZ-MHc">
+                        <barButtonItem key="leftBarButtonItem" title="     Reset " id="HGL-Mw-r5E">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="resetUserOneButton:" destination="BYZ-38-t0r" id="4L9-Jb-poa"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Reset User 2" id="dND-U1-LD4">
+                        <barButtonItem key="rightBarButtonItem" title="Reset     " id="dND-U1-LD4">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="resetUserTwoButton:" destination="BYZ-38-t0r" id="bon-nN-6RP"/>
@@ -160,11 +169,72 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="DPp-ga-W7X" kind="show" identifier="movieDetailSegue" id="Dls-fo-9xH"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vnh-BT-Axm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="LeX-fS-GQZ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1076" y="1693"/>
+        </scene>
+        <!--Movie Detail View Controller-->
+        <scene sceneID="Cx0-xS-yHB">
+            <objects>
+                <viewController id="DPp-ga-W7X" customClass="MovieDetailViewController" customModule="MovieTime" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RQa-BP-HUw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vqD-Fq-6Wh">
+                                <rect key="frame" x="37.5" y="84" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="GlH-Cq-0rz"/>
+                                    <constraint firstAttribute="width" constant="300" id="zdB-5H-ly1"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="s0h-Xx-rAs">
+                                <rect key="frame" x="20" y="394" width="335" height="150"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="Wsf-u0-c9t"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tmdbLogo" translatesAutoresizingMaskIntoConstraints="NO" id="uJl-6g-HUE">
+                                <rect key="frame" x="112.5" y="612" width="150" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="GCU-ZT-N88"/>
+                                    <constraint firstAttribute="width" constant="150" id="hvJ-em-imA"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vqD-Fq-6Wh" firstAttribute="centerX" secondItem="RQa-BP-HUw" secondAttribute="centerX" id="DNW-j7-bnG"/>
+                            <constraint firstItem="s0h-Xx-rAs" firstAttribute="centerX" secondItem="RQa-BP-HUw" secondAttribute="centerX" id="FGZ-7P-OYe"/>
+                            <constraint firstItem="szp-db-bOz" firstAttribute="trailing" secondItem="s0h-Xx-rAs" secondAttribute="trailing" constant="20" id="Op8-aS-c3k"/>
+                            <constraint firstItem="s0h-Xx-rAs" firstAttribute="top" secondItem="vqD-Fq-6Wh" secondAttribute="bottom" constant="10" id="Rlu-Vy-eFF"/>
+                            <constraint firstItem="uJl-6g-HUE" firstAttribute="bottom" secondItem="szp-db-bOz" secondAttribute="bottom" id="Sd3-5N-Mkg"/>
+                            <constraint firstItem="vqD-Fq-6Wh" firstAttribute="top" secondItem="szp-db-bOz" secondAttribute="top" constant="20" id="TFA-s4-EFT"/>
+                            <constraint firstItem="uJl-6g-HUE" firstAttribute="centerX" secondItem="RQa-BP-HUw" secondAttribute="centerX" id="ZTO-zw-gQb"/>
+                            <constraint firstItem="s0h-Xx-rAs" firstAttribute="leading" secondItem="szp-db-bOz" secondAttribute="leading" constant="20" id="vOC-r3-GTW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="szp-db-bOz"/>
+                    </view>
+                    <connections>
+                        <outlet property="movieDetailImage" destination="vqD-Fq-6Wh" id="pbS-Ok-Nlj"/>
+                        <outlet property="movieDetailInformation" destination="s0h-Xx-rAs" id="Ets-zl-ucE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rea-ml-nuZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1852" y="1693"/>
         </scene>
         <!--Actors-->
         <scene sceneID="Npw-Hl-smv">
@@ -373,5 +443,6 @@
     <resources>
         <image name="bg-iphone6plus" width="1241" height="2209"/>
         <image name="bubble-empty" width="123.5" height="97.5"/>
+        <image name="tmdbLogo" width="408" height="161"/>
     </resources>
 </document>

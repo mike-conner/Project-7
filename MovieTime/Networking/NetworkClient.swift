@@ -17,7 +17,7 @@ class NetworkClient {
     }
 }
 
-struct GenreAndActorManager<T: Decodable> {
+struct APIManager<T: Decodable> {
     static func getAll(url: URL, completion: @escaping (T?, Error?) -> Void) {
         let client = NetworkClient(configuration: .default)
         
@@ -28,7 +28,7 @@ struct GenreAndActorManager<T: Decodable> {
         let task = client.session.dataTask(with: request) { data, response, error in
             if let data = data {
                 guard let httpResponse = response as? HTTPURLResponse else {
-                    completion(nil, APIError.requestFailed)
+                    completion(nil, APIError.responseUnsuccessful)
                     return
                 }
                 if httpResponse.statusCode == 200 {
@@ -36,49 +36,16 @@ struct GenreAndActorManager<T: Decodable> {
                         let results = try client.decoder.decode(T.self, from: data)
                         completion(results, nil)
                     } catch _ {
-                        completion(nil, APIError.requestFailed)
+                        completion(nil, APIError.jsonParsingFailure)
                     }
                 } else {
                     completion(nil, APIError.requestFailed)
                 }
             } else if error != nil {
-                completion(nil, APIError.requestFailed)
+                completion(nil, APIError.invalidData)
             }
         }
     task.resume()
     }
 }
-
-struct ResultsManager<T: Decodable> {
-    static func getAll(url: URL, completion: @escaping (T?, Error?) -> Void) {
-        let client = NetworkClient(configuration: .default)
-        
-        client.decoder.keyDecodingStrategy = .convertFromSnakeCase
-        
-        let request = URLRequest(url: url)
-        
-        let task = client.session.dataTask(with: request) { data, response, error in
-            if let data = data {
-                guard let httpResponse = response as? HTTPURLResponse else {
-                    completion(nil, APIError.requestFailed)
-                    return
-                }
-                if httpResponse.statusCode == 200 {
-                    do {
-                        let results = try client.decoder.decode(T.self, from: data)
-                        completion(results, nil)
-                    } catch _ {
-                        completion(nil, APIError.requestFailed)
-                    }
-                } else {
-                    completion(nil, APIError.requestFailed)
-                }
-            } else if error != nil {
-                completion(nil, APIError.requestFailed)
-            }
-        }
-        task.resume()
-    }
-}
-
 

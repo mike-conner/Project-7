@@ -7,14 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13144A0F226267710040BD2D /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13144A0E226267710040BD2D /* MovieDetailViewController.swift */; };
 		131CBB6F222C434D007DC5D9 /* Logic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131CBB6E222C434D007DC5D9 /* Logic.swift */; };
 		131CBB71222C78A8007DC5D9 /* HelperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131CBB70222C78A8007DC5D9 /* HelperExtensions.swift */; };
 		1326789A2225FB84007D567D /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132678992225FB84007D567D /* NetworkClient.swift */; };
 		13503A3522260DF400224DFA /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13503A3422260DF400224DFA /* Error.swift */; };
-		1374001B22517EFA007030C2 /* GetActorMovies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374001722517EFA007030C2 /* GetActorMovies.swift */; };
-		1374001C22517EFA007030C2 /* GetMovies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374001822517EFA007030C2 /* GetMovies.swift */; };
-		1374001D22517EFA007030C2 /* GetGenres.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374001922517EFA007030C2 /* GetGenres.swift */; };
-		1374001E22517EFA007030C2 /* GetActors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1374001A22517EFA007030C2 /* GetActors.swift */; };
 		138C01722250165500261378 /* Actors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138C01712250165500261378 /* Actors.swift */; };
 		138C01742250166100261378 /* Genres.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138C01732250166100261378 /* Genres.swift */; };
 		138C01762250166D00261378 /* Movies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138C01752250166C00261378 /* Movies.swift */; };
@@ -36,14 +33,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		13144A0E226267710040BD2D /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		131CBB6E222C434D007DC5D9 /* Logic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logic.swift; sourceTree = "<group>"; };
 		131CBB70222C78A8007DC5D9 /* HelperExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperExtensions.swift; sourceTree = "<group>"; };
 		132678992225FB84007D567D /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		13503A3422260DF400224DFA /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
-		1374001722517EFA007030C2 /* GetActorMovies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetActorMovies.swift; sourceTree = "<group>"; };
-		1374001822517EFA007030C2 /* GetMovies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetMovies.swift; sourceTree = "<group>"; };
-		1374001922517EFA007030C2 /* GetGenres.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetGenres.swift; sourceTree = "<group>"; };
-		1374001A22517EFA007030C2 /* GetActors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetActors.swift; sourceTree = "<group>"; };
 		138C01712250165500261378 /* Actors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Actors.swift; sourceTree = "<group>"; };
 		138C01732250166100261378 /* Genres.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genres.swift; sourceTree = "<group>"; };
 		138C01752250166C00261378 /* Movies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movies.swift; sourceTree = "<group>"; };
@@ -80,7 +74,6 @@
 		132678982225FB74007D567D /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				1374001F22517F00007030C2 /* old extensions */,
 				132678992225FB84007D567D /* NetworkClient.swift */,
 				13503A3422260DF400224DFA /* Error.swift */,
 			);
@@ -118,19 +111,9 @@
 				13B272142228ABC100EC5EA5 /* GenreTableViewController.swift */,
 				13B272162228ABDC00EC5EA5 /* ActorTableViewController.swift */,
 				13B272182228ABEB00EC5EA5 /* ResultsTableViewController.swift */,
+				13144A0E226267710040BD2D /* MovieDetailViewController.swift */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		1374001F22517F00007030C2 /* old extensions */ = {
-			isa = PBXGroup;
-			children = (
-				1374001922517EFA007030C2 /* GetGenres.swift */,
-				1374001A22517EFA007030C2 /* GetActors.swift */,
-				1374001722517EFA007030C2 /* GetActorMovies.swift */,
-				1374001822517EFA007030C2 /* GetMovies.swift */,
-			);
-			path = "old extensions";
 			sourceTree = "<group>";
 		};
 		13EA23E0224FCE8A00AC2EF9 /* Cells */ = {
@@ -255,20 +238,17 @@
 				138C01762250166D00261378 /* Movies.swift in Sources */,
 				138C01802250179500261378 /* ActorCell.swift in Sources */,
 				138C01722250165500261378 /* Actors.swift in Sources */,
-				1374001C22517EFA007030C2 /* GetMovies.swift in Sources */,
 				13C5C62F2227670600C24F4E /* MovieTimeManager.swift in Sources */,
 				13B272192228ABEB00EC5EA5 /* ResultsTableViewController.swift in Sources */,
 				13503A3522260DF400224DFA /* Error.swift in Sources */,
-				1374001E22517EFA007030C2 /* GetActors.swift in Sources */,
-				1374001B22517EFA007030C2 /* GetActorMovies.swift in Sources */,
 				131CBB6F222C434D007DC5D9 /* Logic.swift in Sources */,
 				138C017E2250172D00261378 /* MovieCell.swift in Sources */,
 				138C01782250167400261378 /* ActorMovies.swift in Sources */,
 				138C01742250166100261378 /* Genres.swift in Sources */,
 				13C5C62D222766FD00C24F4E /* User.swift in Sources */,
+				13144A0F226267710040BD2D /* MovieDetailViewController.swift in Sources */,
 				131CBB71222C78A8007DC5D9 /* HelperExtensions.swift in Sources */,
 				13B272152228ABC100EC5EA5 /* GenreTableViewController.swift in Sources */,
-				1374001D22517EFA007030C2 /* GetGenres.swift in Sources */,
 				13B272172228ABDC00EC5EA5 /* ActorTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
