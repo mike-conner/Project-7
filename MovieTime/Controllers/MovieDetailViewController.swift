@@ -19,11 +19,14 @@ class MovieDetailViewController: UIViewController {
     
     
     override func viewDidLoad() {
+        
+        
         super.viewDidLoad()
-        getPoster()
-        movieDetailInformation.text = "\(movieDescription)"
+        getPoster() // call function resposible for getting poster of movie from API
+        movieDetailInformation.text = "\(movieDescription)" // Set text for the movie description
     }
     
+    // Networking code for getting the poster image from the API
     func getPoster() {
         guard let url = URL(string: "https://image.tmdb.org/t/p/w500\(posterPath)") else {
             return
@@ -31,15 +34,24 @@ class MovieDetailViewController: UIViewController {
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if error != nil {
-                print(error ?? "")
                 return
             }
             
+            guard let httpResponse = response as? HTTPURLResponse else {
+                return
+            }
+                
+            switch httpResponse.statusCode {
+            case 200...299:
             DispatchQueue.main.async {
                 self.movieDetailImage.image = UIImage(data: data!)
+                }
+            default:
+                if let error = error {
+                    print(error) // Print error to console
+                }
+                return
             }
         }.resume()
-        
     }
-    
 }

@@ -10,11 +10,13 @@ import Foundation
 
 extension MovieTimeManager {
     
+    // function to start the logic to create the list of final movies
     func determineMovieMatches() {
-        removeMoviesNotMatchingSelectedGenresForUserOne()
-        removeMoviesNotMatchingSelectedGenresForUserTwo()
-        compareSortedMovieLists()
+        removeMoviesNotMatchingSelectedGenresForUserOne() // eliminate duplicate movies from user one's list
+        removeMoviesNotMatchingSelectedGenresForUserTwo() // eliminate duplicate movies from user two's list
+        compareSortedMovieLists() // compare the two duplicate free lists
     }
+    
     
     func removeMoviesNotMatchingSelectedGenresForUserOne() {
         var selectedGenreIndex: Int = 0
@@ -25,6 +27,7 @@ extension MovieTimeManager {
         let totalNumberOfSelectedGenres = userOne.userSelectedGenres.count
         let totalNumberOfSelectedActors = userOne.userSelectedActors.count
         
+        // logic to remove duplicates
         while selectedGenreIndex < totalNumberOfSelectedGenres {
             while selectedActorIndex < totalNumberOfSelectedActors {
                 if apiReturnedUserOneActorMovies.count != 0 {
@@ -58,6 +61,7 @@ extension MovieTimeManager {
         let totalNumberOfSelectedGenres = userTwo.userSelectedGenres.count
         let totalNumberOfSelectedActors = userTwo.userSelectedActors.count
         
+        // logic to remove duplicates
         while selectedGenreIndex < totalNumberOfSelectedGenres {
             while selectedActorIndex < totalNumberOfSelectedActors {
                 if apiReturnedUserTwoActorMovies.count != 0 {
@@ -86,10 +90,11 @@ extension MovieTimeManager {
         var userOneIndex = 0
         var userTwoIndex = 0
         
+        // logic that determines if a movie is in both user's results
         while userOneIndex < userOne.movieIdListAfterGenreSort.count {
             while userTwoIndex < userTwo.movieIdListAfterGenreSort.count {
                 if userOne.movieIdListAfterGenreSort[userOneIndex] == userTwo.movieIdListAfterGenreSort[userTwoIndex] {
-                    movieListIds.append(userOne.movieIdListAfterGenreSort[userOneIndex])
+                    movieListIds.append(userOne.movieIdListAfterGenreSort[userOneIndex]) //create array of final movie ID's, may
                     break
                 }
                 userTwoIndex += 1
@@ -97,6 +102,6 @@ extension MovieTimeManager {
             userTwoIndex = 0
             userOneIndex += 1
         }
-        movieListIds = movieListIds.uniqued()
+        movieListIds = movieListIds.uniqued() // remove duplicates from array of final movie ID's
     }
 }

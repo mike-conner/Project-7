@@ -12,7 +12,8 @@ struct Actors: Codable {
     var results: [Actor] = [Actor]()
 }
 
-struct Actor: Codable, Equatable {
+struct Actor: Codable {
+    
     let id: Int
     let name: String
     let profilePath: String

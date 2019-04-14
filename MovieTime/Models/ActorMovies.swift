@@ -12,7 +12,7 @@ struct ActorMovies: Codable {
     var cast: [ActorMovie] = [ActorMovie]()
 }
 
-struct ActorMovie: Codable, Equatable {
+struct ActorMovie: Codable {
     let id: Int
     let genreIds: [Int]
 }

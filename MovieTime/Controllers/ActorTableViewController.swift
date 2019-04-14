@@ -12,25 +12,24 @@ class ActorTableViewController: UITableViewController {
     
     var movieTimeManager = MovieTimeManager()
     var userSelectActorCounter: Int = 0
+    let maxAllowableActorSelections: Int = 5
+    let maxAllowableActorPages: Int = 3
 
     @IBOutlet weak var doneButton: UIBarButtonItem!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        guard let url = URL(string: "https://api.themoviedb.org/3/person/popular?api_key=164f5af1e46d0911dd1fc6fa484e7abe&language=en-US") else {
-            return
-        }
         
-        APIManager<Actors>.getAll(url: url) { actors, errors in
-            DispatchQueue.main.sync {
-                if let actors = actors {
-                    self.movieTimeManager.apiReturnedActors = actors
-                    self.reloadData()
-                }
-            }
-        }
+        // set title bar attributes
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.black, NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 25)!]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        
+        super.viewDidLoad()
+        doneButton.isEnabled = false
+        
+        getActors()
     }
-
+    
+    // dismiss the ActorTableViewController and go back to GenreTableViewController
     @IBAction func goBackToGenresVC(_ sender: Any) {
     }
     
@@ -57,12 +56,13 @@ class ActorTableViewController: UITableViewController {
         return true
     }
     
+    // Calls function that adds actors from userSelectedActors array if selected
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if userSelectActorCounter < 5 {
+        if userSelectActorCounter < maxAllowableActorSelections {
             selectedActors(indexPath: indexPath)
             userSelectActorCounter += 1
         } else {
-            showAlert(with: "😢", and: "There is a maximum of 5 selections.")
+            showAlert(with: "😢", and: "There is a maximum of \(maxAllowableActorSelections) selections.")
             tableView.deselectRow(at: indexPath, animated: false )
         }
         if userSelectActorCounter > 0 {
@@ -70,6 +70,7 @@ class ActorTableViewController: UITableViewController {
         }
     }
     
+    // Removes actors from userSelectedActors array if deselected
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         var temporaryIndex = 0
         if movieTimeManager.userOneMakingSelections == true {
@@ -97,6 +98,7 @@ class ActorTableViewController: UITableViewController {
         }
     }
     
+    // function that addes user selected actors to userSelectedActors array
     func selectedActors(indexPath: IndexPath) {
         let selectedActor = movieTimeManager.apiReturnedActors.results[indexPath.row]
         if movieTimeManager.userOneMakingSelections == true {
@@ -106,8 +108,35 @@ class ActorTableViewController: UITableViewController {
         }
     }
     
+    // Code below creates the URL and makes the call to the API which returns all the available actors
+    func getActors() {
+        var page = 1
+        while page <= maxAllowableActorPages {
+            getActors(from: page)
+            page += 1
+        }
+    }
+    
+    func getActors(from page: Int) {
+        guard let url = URL(string: "https://api.themoviedb.org/3/person/popular?api_key=164f5af1e46d0911dd1fc6fa484e7abe&language=en-US") else {
+            return
+        }
+        
+        APIManager<Actors>.getAll(url: url) { actors, errors in
+            DispatchQueue.main.sync {
+                if let actors = actors {
+                    self.movieTimeManager.apiReturnedActors.results.append(contentsOf: actors.results) // Append next page of actors from API call to array
+                    self.reloadData() // call function to reload tableview once API call is completed
+                } else {
+                    if let errors = errors {
+                        print(errors) // Print error to console
+                    }
+                }
+            }
+        }
+    }
+    
     func reloadData() {
         self.tableView.reloadData()
     }
-    
 }

@@ -12,7 +12,7 @@ struct Genres: Decodable {
     var genres: [Genre] = [Genre]()
 }
 
-struct Genre: Decodable, Equatable {
+struct Genre: Decodable {
     let id: Int
     let name: String
 }

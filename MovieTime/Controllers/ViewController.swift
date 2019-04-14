@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    // create the app manager object
     var movieTimeManager = MovieTimeManager()
     
     @IBOutlet weak var resetUserOne: UIBarButtonItem!
@@ -18,13 +19,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var userTwoSelectionsComplete: UIButton!
     
     override func viewDidLoad() {
+        
+        // set title bar attributes
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white, NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 25)!]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        
         super.viewDidLoad()
+        
         resetUserOne.isEnabled = false
         resetUserTwo.isEnabled = false
         userOneSelectionsComplete.isEnabled = true
         userTwoSelectionsComplete.isEnabled = true
-        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
-        navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
     
     @IBAction func resetUserOneButton(_ sender: Any) {
@@ -63,16 +68,16 @@ class ViewController: UIViewController {
         if movieTimeManager.userOne.areUserSelectionsComplete == true && movieTimeManager.userTwo.areUserSelectionsComplete == true {
             movieTimeManager.determineMovieMatches()
             if movieTimeManager.movieListIds.count > 0 {
-            //    getFinalMovies()
                 performSegue(withIdentifier: "goToResultsTableViewSegue", sender: self)
             } else {
-                showAlert(with: "😢", and: "There are no movies that match the selected criteria.")
+                showAlert(with: "😢", and: "There are no movies that match the selected criteria. Perhaps you should play a board game instead?")
             }
         } else {
             showAlert(with: "😢", and: "Please make sure both users have made their selections.")
         }
     }
     
+    // called when user selects "Clear" on ResultsTableViewController Navbar
     @IBAction func unwindFromResultsVC(_ sender: UIStoryboardSegue) {
         self.resetUserOneButton(self)
         self.resetUserTwoButton(self)
@@ -80,10 +85,12 @@ class ViewController: UIViewController {
         self.movieTimeManager.finalMovies.removeAll()
     }
     
+    // called when user selects "Back" from GenreTableViewController Navbar
     @IBAction func unwindFromGenresVC(_ sender: UIStoryboardSegue) {
-        
+        // doesn't actually do anything since nothing was done that needs to be undone, but without it the "Back" button doesn't work
     }
     
+    // called when user selects "Done" from ActorTableViewController Navbar. Goes back to main page for the other user to make selections or, if they already have, to see the results
     @IBAction func unwindFromActorsVCWhenComplete(_ sender: UIStoryboardSegue) {
         if movieTimeManager.userOneMakingSelections == true {
             movieTimeManager.userOne.areUserSelectionsComplete = true
@@ -100,6 +107,7 @@ class ViewController: UIViewController {
         }
     }
     
+    // Determine which VC to segue to; either GenreTableViewController or ResultsTableViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToGenreTableViewSegue" {
             let navigationVC = segue.destination as? UINavigationController
@@ -112,6 +120,7 @@ class ViewController: UIViewController {
         }
     }
     
+    // Function used to call networking code for each actor selected by passing the actor ID to the neworking function.
     func getListOfUserOneActorMovies() {
         var indexCounter = 0
         let totalSelectedActors = movieTimeManager.userOne.userSelectedActors.count
@@ -121,13 +130,18 @@ class ViewController: UIViewController {
         }
     }
     
+    // Networking function that provides the URL and actor ID so the APIManager to make the networking call
     func getListOfUserOneActorMovies(actorId: Int) {
         guard let url = URL(string: "https://api.themoviedb.org/3/person/\(actorId)/movie_credits?api_key=164f5af1e46d0911dd1fc6fa484e7abe&language=en-US") else {
-            return
+            return // Return if URL creation fails.
         }
         APIManager<ActorMovies>.getAll(url: url) { actorMovies, errors in
             if let actorMovies = actorMovies {
-                self.movieTimeManager.apiReturnedUserOneActorMovies.append(actorMovies)
+                self.movieTimeManager.apiReturnedUserOneActorMovies.append(actorMovies) // Create/append an array of all movies that match user one's Genre and Actor selections
+            } else {
+                if let errors = errors {
+                    print(errors) // Print error to console
+                }
             }
         }
     }
@@ -148,11 +162,16 @@ class ViewController: UIViewController {
         APIManager<ActorMovies>.getAll(url: url) { actorMovies, errors in
             if let actorMovies = actorMovies {
                 self.movieTimeManager.apiReturnedUserTwoActorMovies.append(actorMovies)
+            } else {
+                if let errors = errors {
+                    print(errors) // Print error to console
+                }
             }
         }
     }
 }
 
+// Extension to present alerts easily 
 extension UIViewController {
     func showAlert(with title: String, and message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)

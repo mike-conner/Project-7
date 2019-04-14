@@ -39,13 +39,12 @@ struct APIManager<T: Decodable> {
                         completion(nil, APIError.jsonParsingFailure)
                     }
                 } else {
-                    completion(nil, APIError.requestFailed)
+                    completion(nil, APIError.invalidStatusCode)
                 }
             } else if error != nil {
-                completion(nil, APIError.invalidData)
+                completion(nil, APIError.requestFailed)
             }
         }
     task.resume()
     }
 }
-
