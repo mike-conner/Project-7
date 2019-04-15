@@ -118,7 +118,7 @@ class ActorTableViewController: UITableViewController {
     }
     
     func getActors(from page: Int) {
-        guard let url = URL(string: "https://api.themoviedb.org/3/person/popular?api_key=164f5af1e46d0911dd1fc6fa484e7abe&language=en-US") else {
+        guard let url = URL(string: "https://api.themoviedb.org/3/person/popular?api_key=164f5af1e46d0911dd1fc6fa484e7abe&language=en-US&page=\(page)") else {
             return
         }
         

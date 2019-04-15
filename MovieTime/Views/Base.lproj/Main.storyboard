@@ -44,7 +44,7 @@
                                 <rect key="frame" x="20" y="151.5" width="335" height="100"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dhb-D2-H4x">
-                                        <rect key="frame" x="0.0" y="0.0" width="148" height="100"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="82.5" height="100"/>
                                         <state key="normal" image="bubble-empty">
                                             <attributedString key="attributedTitle"/>
                                         </state>
@@ -53,7 +53,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1oh-Wl-kBo">
-                                        <rect key="frame" x="181" y="0.0" width="154" height="100"/>
+                                        <rect key="frame" x="115.5" y="0.0" width="219.5" height="100"/>
                                         <state key="normal" image="bubble-empty">
                                             <attributedString key="attributedTitle"/>
                                         </state>
@@ -67,7 +67,7 @@
                                 </constraints>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tmdbLogo" translatesAutoresizingMaskIntoConstraints="NO" id="pnf-H0-FEl">
-                                <rect key="frame" x="137.5" y="8" width="100" height="30.000000000000028"/>
+                                <rect key="frame" x="137.5" y="8" width="100" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="Dww-It-1Pc"/>
                                     <constraint firstAttribute="height" constant="30" id="beP-fV-xE9"/>
